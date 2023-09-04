@@ -1,7 +1,9 @@
 @import '../../../config/rem-calc.scss';
 
 $padding: rem-calc(20px);
+
 :host{
+.listagem{
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -72,4 +74,5 @@ $padding: rem-calc(20px);
       }
     }
   }
+}
 }
