@@ -19,7 +19,7 @@ export class DetailsComponent {
 
   constructor(
     private activateRoute: ActivatedRoute,
-    private pokeApiService: PokeApiService
+    private pokeApiService: PokeApiService,
   ) { }
 
   ngOnInit(): void {
