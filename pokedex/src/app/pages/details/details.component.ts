@@ -10,11 +10,11 @@ import { PokeApiService } from 'src/app/service/poke-api.service';
 })
 export class DetailsComponent {
 
-  private urlPokemon: string = 'https://pokeapi.co/api/v2/pokemon';
-  private urlName: string = 'https://pokeapi.co/api/v2/pokemon-species';
+  private readonly urlPokemon: string = 'https://pokeapi.co/api/v2/pokemon';
+  private readonly urlName: string = 'https://pokeapi.co/api/v2/pokemon-species';
 
-  public pokemon: any;
-  public isLoading: boolean = false;
+  public pokemon: any; // Considere tipar isto
+  public isLoaded: boolean = false; // Renomeado
   public apiError: boolean = false;
 
   constructor(
@@ -23,23 +23,22 @@ export class DetailsComponent {
   ) { }
 
   ngOnInit(): void {
-    this.getPokemon;
+    this.loadPokemonData(); // Renomeado e chamado
   }
 
-  get getPokemon(){
+  private loadPokemonData() { // Transformado em método
     const id = this.activateRoute.snapshot.params['id'];
     const pokemon = this.pokeApiService.apiGetPokemons(`${this.urlPokemon}/${id}`);
     const name = this.pokeApiService.apiGetPokemons(`${this.urlName}/${id}`);
 
-    return forkJoin([pokemon, name]).subscribe(
+    forkJoin([pokemon, name]).subscribe(
       res => {
-
         this.pokemon = res;
-        // this.isLoading = true;
+        this.isLoaded = true; // Renomeado
       },
       error => {
         this.apiError = true;
       }
-    )
+    );
   }
 }
