@@ -33,9 +33,9 @@ export class DetailsComponent {
 
     return forkJoin([pokemon, name]).subscribe(
       res => {
-        // console.log(res);
+
         this.pokemon = res;
-        this.isLoading = true;
+        // this.isLoading = true;
       },
       error => {
         this.apiError = true;
